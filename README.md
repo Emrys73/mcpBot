@@ -19,8 +19,14 @@ The client expects the weather server to run on port 8000.
 ```bash
 uv run weather.py --port 8000
 ```
+### 2. Start the webSearch Server
+The client expects the weather server to run on port 8001.
 
-### 2. Start the Client
+```bash
+uv run weather.py --port 8001
+```
+
+### 3. Start the Client
 In a separate terminal window, run the client. It will automatically start the Math server internally.
 
 ```bash
