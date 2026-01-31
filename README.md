@@ -26,6 +26,9 @@ The client expects the weather server to run on port 8001.
 uv run weather.py --port 8001
 ```
 
+### After changing the port of the servers, remember to change the port number in the client.py to listen.
+
+
 ### 3. Start the Client
 In a separate terminal window, run the client. It will automatically start the Math server internally.
 
