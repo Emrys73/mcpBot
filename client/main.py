@@ -36,11 +36,17 @@ async def read_resource(uri: str) -> str:
 
 async def main():
     global mcp_client
+
+    # Calculate absolute path to math server
+    # __file__ is client/main.py, so dirname(dirname(...)) gives root MCP_server/
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    math_server_path = os.path.join(base_dir, "servers", "math", "server.py")
+
     client=MultiServerMCPClient({
         #
         "math": {
             "command": "python",
-            "args": ["mathserver.py"], ## ensure correct absolute path to the mathserver.py file
+            "args": [math_server_path], ## ensure correct absolute path to the mathserver.py file
             "transport": "stdio", ## Use standard input and output(stdin/stdout) to recieve and respond to tool fuction calls
         },
         "weather": {
@@ -49,6 +55,10 @@ async def main():
         },
         "web": {
             "url": "http://127.0.0.1:8001/sse",
+            "transport": "sse",
+        },
+        "image_gen": {
+            "url": "http://127.0.0.1:8003/sse",
             "transport": "sse",
         },
     })
@@ -80,7 +90,7 @@ async def main():
         client = MultiServerMCPClient({
             "math": {
                 "command": "python",
-                "args": ["mathserver.py"],
+                "args": [math_server_path],
                 "transport": "stdio",
             },
         })

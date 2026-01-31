@@ -31,7 +31,7 @@ def web_search(query: str) -> str:
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=8000, help="Port to run the server on")
+    parser.add_argument("--port", type=int, default=8001, help="Port to run the server on")
     args = parser.parse_args()
     
     mcp.settings.port = args.port
